@@ -12,7 +12,8 @@ plugins: [
         filename: 'remoteEntry.js',
         exposes:{
             './CartShow': './src/index'
-        }
+        },
+        shared: ["faker"]
     }),
     new HtmlWebpackPlugin({
         template: './index.html'
