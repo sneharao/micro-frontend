@@ -14,7 +14,7 @@ module.exports = {
             name: "products",
             filename: "remoteEntry.js",
             exposes: {
-            "./ProductsIndex": "./src/index"
+            "./ProductsIndex": "./src/bootstrap"
             },
             // tells that should use single copy of faker
             shared: {
