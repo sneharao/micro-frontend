@@ -13,7 +13,12 @@ plugins: [
         exposes:{
             './CartShow': './src/index'
         },
-        shared: ["faker"]
+        // tells that should use single copy of faker
+        shared: {
+            faker: {
+                singleton: true
+            }
+        }
     }),
     new HtmlWebpackPlugin({
         template: './index.html'
