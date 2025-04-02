@@ -17,3 +17,5 @@ faker is used as a shared module between cart and product
 
 Container module 
 connected to cart and product using module federation plugin of webpack with name , fileName and exposed file and port
+
+Note:The div id used shouldn't have the same name as the module name exported in webpack config
