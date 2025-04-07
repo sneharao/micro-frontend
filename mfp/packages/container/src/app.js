@@ -1,4 +1,8 @@
 import React from 'react';
+import { mount } from 'marketing/MarketingApp';
+
+console.log('Container app is running', mount);
+
 
 export default () => {
     return <div>

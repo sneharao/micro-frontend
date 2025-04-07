@@ -1,7 +1,7 @@
 const { merge } = require('webpack-merge');// merge common config to dev config
 const HTMLWebpackPlugin = require('html-webpack-plugin'); //inject script to html file
 const commonConfig = require('./webpack.common'); //common config
-
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin'); // Module Federation plugin
 
 const devConfig = {
     mode: 'development', // Set mode to development,
@@ -14,6 +14,25 @@ const devConfig = {
     plugins: [
         new HTMLWebpackPlugin({
             template: './public/index.html', // Template file to use
+        }),
+        new ModuleFederationPlugin({
+            name: 'marketing', // Name of the module global variable
+            filename: 'remoteEntry.js', // File name to be used for remote entry
+            exposes: {
+                './MarketingApp': './src/bootstrap' // Expose the bootstrap file
+            },
+            shared: {
+                // react: {
+                //     singleton: true, // Use single instance of react
+                //     eager: true,
+                //     requiredVersion: false,
+                // },
+                // 'react-dom': {
+                //     singleton: true, // Use single instance of react-dom
+                //     eager: true,
+                //     requiredVersion: false,
+                // }
+            }
         }),
     ],
 };
