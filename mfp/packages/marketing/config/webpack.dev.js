@@ -21,18 +21,7 @@ const devConfig = {
             exposes: {
                 './MarketingApp': './src/bootstrap' // Expose the bootstrap file
             },
-            shared: {
-                // react: {
-                //     singleton: true, // Use single instance of react
-                //     eager: true,
-                //     requiredVersion: false,
-                // },
-                // 'react-dom': {
-                //     singleton: true, // Use single instance of react-dom
-                //     eager: true,
-                //     requiredVersion: false,
-                // }
-            }
+            shared: ['react', 'react-dom']
         }),
     ],
 };

@@ -21,18 +21,7 @@ const devConfig = {
             remotes: {
                 marketing: 'marketing@http://localhost:8081/remoteEntry.js', // Remote entry file for marketing app
             },
-            // shared: {
-            //     react: {
-            //         singleton: true, // Use single instance of react
-            //         eager: true,
-            //         requiredVersion: false,
-            //     },
-            //     'react-dom': {
-            //         singleton: true, // Use single instance of react-dom
-            //         eager: true,
-            //         requiredVersion: false,
-            //     }
-            // }
+            shared: ['react', 'react-dom']
         }),
     ],
 };
