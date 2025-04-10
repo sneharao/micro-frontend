@@ -2,7 +2,7 @@ const { merge } = require('webpack-merge');// merge common config to dev config
 const HTMLWebpackPlugin = require('html-webpack-plugin'); //inject script to html file
 const commonConfig = require('./webpack.common'); //common config
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin'); // Module Federation plugin
-
+const packageJson = require('../package.json'); // package.json file
 
 const devConfig = {
     mode: 'development', // Set mode to development,
@@ -21,7 +21,7 @@ const devConfig = {
             remotes: {
                 marketing: 'marketing@http://localhost:8081/remoteEntry.js', // Remote entry file for marketing app
             },
-            shared: ['react', 'react-dom']
+            shared: packageJson.dependencies, // Shared dependencies between apps
         }),
     ],
 };
