@@ -1,3 +1,6 @@
+const HTMLWebpackPlugin = require('html-webpack-plugin'); //inject script to html file
+const { plugins } = require('./webpack.dev');
+
 module.exports = {
     module: {
         rules: [{
@@ -15,6 +18,9 @@ module.exports = {
                 }
             }
         }]
-    }
+    },
+    plugins: [new HTMLWebpackPlugin({
+        template: './public/index.html', // Template file to use
+    })]
 
 }
