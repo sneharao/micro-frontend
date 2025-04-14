@@ -8,6 +8,7 @@ const prodConfig = {
     mode: 'production', // Set mode to production
     output: {
         filename: '[name].[contenthash].js', // Output file name with content hash
+        publicPath: '/container/latest/', // Public path for the output files
     },
     plugins: [
         new ModuleFederationPlugin({
