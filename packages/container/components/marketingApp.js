@@ -7,7 +7,7 @@ export default () => {
     const ref = useRef(null);
     const history = useHistory();
     useEffect(() => {
-        mount(ref.current, {
+        const { onParentNavigate } = mount(ref.current, {
             onNavigate: ({ pathname: nextPathname }) => {
                 const { pathname } = history.location;
                 // to check if current location is same as next location
@@ -18,7 +18,9 @@ export default () => {
                 console.log('onNavigate called from cmarketing', nextPathname);
             }
         });
-    });
+        history.listen(onParentNavigate);
+        // listen to history changes and call onParentNavigate
+    }, []);
 
     return <div ref={ref} />;
 
