@@ -5,10 +5,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
-import { createMemoryHistory } from 'history';
+import { createMemoryHistory, createBrowserHistory } from 'history';
 
-const mount = (el, { onNavigate }) => {
-    const history = createMemoryHistory();
+const mount = (el, { onNavigate, defaultHostory }) => {
+    const history = defaultHostory || createMemoryHistory();
     // We need to pass the history object to the app
     if (onNavigate) {
         history.listen(onNavigate);
@@ -33,7 +33,7 @@ const mount = (el, { onNavigate }) => {
 if (process.env.NODE_ENV === 'development') {
     const devRoot = document.querySelector('#marketing_dev_root');
     if (devRoot) {
-        mount(devRoot, {});
+        mount(devRoot, { defaultHostory: createBrowserHistory() });
     }
 }
 
