@@ -7,9 +7,10 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import { createMemoryHistory } from 'history';
 
-const mount = (el) => {
+const mount = (el, { onNavigate }) => {
     const history = createMemoryHistory();
-    // We are using memory history for the sub-apps
+    // We need to pass the history object to the app
+    history.listen(onNavigate);
     ReactDOM.render(
         <App history={history} />,
         el
