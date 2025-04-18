@@ -5,10 +5,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
+import { createMemoryHistory } from 'history';
 
 const mount = (el) => {
+    const history = createMemoryHistory();
+    // We are using memory history for the sub-apps
     ReactDOM.render(
-        <App />,
+        <App history={history} />,
         el
     );
 }
