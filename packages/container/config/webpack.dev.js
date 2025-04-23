@@ -2,7 +2,6 @@ const { merge } = require('webpack-merge');// merge common config to dev config
 const commonConfig = require('./webpack.common'); //common config
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin'); // Module Federation plugin
 const packageJson = require('../package.json'); // package.json file
-const { output } = require('../../auth/config/webpack.dev');
 
 const devConfig = {
     mode: 'development', // Set mode to development,
@@ -21,6 +20,13 @@ const devConfig = {
             name: 'container', // Name of the module global variable
             remotes: {
                 marketing: 'marketing@http://localhost:8081/remoteEntry.js', // Remote entry file for marketing app
+            },
+            shared: packageJson.dependencies, // Shared dependencies between apps
+        }),
+        new ModuleFederationPlugin({
+            name: 'container', // Name of the module global variable
+            remotes: {
+                auth: 'auth@http://localhost:8082/remoteEntry.js', // Remote entry file for auth app
             },
             shared: packageJson.dependencies, // Shared dependencies between apps
         }),
