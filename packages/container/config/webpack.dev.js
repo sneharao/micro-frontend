@@ -2,9 +2,13 @@ const { merge } = require('webpack-merge');// merge common config to dev config
 const commonConfig = require('./webpack.common'); //common config
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin'); // Module Federation plugin
 const packageJson = require('../package.json'); // package.json file
+const { output } = require('../../auth/config/webpack.dev');
 
 const devConfig = {
     mode: 'development', // Set mode to development,
+    output: {
+        publicPath: 'http://localhost:8080/', // Public path for the output files
+    },
     devServer: {
         port: 8080, // Port to run the server
         historyApiFallback: {

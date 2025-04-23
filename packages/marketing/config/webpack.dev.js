@@ -6,6 +6,9 @@ const packageJson = require('../package.json'); // package.json file
 
 const devConfig = {
     mode: 'development', // Set mode to development,
+    output: {
+        publicPath: 'http://localhost:8081/', // Public path for the output files
+    },
     devServer: {
         port: 8081, // Port to run the server
         historyApiFallback: {
