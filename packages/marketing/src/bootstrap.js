@@ -7,8 +7,10 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 
-const mount = (el, { onNavigate, defaultHostory }) => {
-    const history = defaultHostory || createMemoryHistory();
+const mount = (el, { onNavigate, defaultHostory, initialPath }) => {
+    const history = defaultHostory || createMemoryHistory({
+        initialEntries: [initialPath]
+    });
     // We need to pass the history object to the app
     if (onNavigate) {
         history.listen(onNavigate);
