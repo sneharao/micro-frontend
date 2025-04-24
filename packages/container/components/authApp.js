@@ -17,7 +17,11 @@ export default () => {
                     history.push(nextPathname);
                 }
                 console.log('onNavigate called from cAuth', nextPathname);
-            }
+            },
+            onSignIn: () => {
+                console.log('onSignIn called from cAuth');
+                // history.push('/dashboard');
+            },
         });
         history.listen(onParentNavigate);
         // listen to history changes and call onParentNavigate
