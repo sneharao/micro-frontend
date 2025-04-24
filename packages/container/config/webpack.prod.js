@@ -15,6 +15,7 @@ const prodConfig = {
             name: 'container', // Name of the module global variable
             remotes: {
                 marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`, // Remote entry for marketing app
+                auth: `auth@${domain}/auth/latest/remoteEntry.js`, // Remote entry for auth app
             },
             shared: packageJson.dependencies, // Shared dependencies between apps
         }),
