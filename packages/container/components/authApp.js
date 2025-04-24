@@ -3,7 +3,7 @@ import { mount } from 'auth/AuthApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default () => {
+export default ({ onLogIn }) => {
     const ref = useRef(null);
     const history = useHistory();
     useEffect(() => {
@@ -19,7 +19,7 @@ export default () => {
                 console.log('onNavigate called from cAuth', nextPathname);
             },
             onSignIn: () => {
-                console.log('onSignIn called from cAuth');
+                onLogIn()
                 // history.push('/dashboard');
             },
         });

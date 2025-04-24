@@ -5,19 +5,20 @@ import Header from '../components/Header';
 import Progress from '../components/progress';
 
 const marketingLazy = lazy(() => import('./../components/MarketingApp'));
-const authLazy = lazy(() => import('./../components/authApp'));
+const AuthLazy = lazy(() => import('./../components/authApp'));
 
 const generateClassName = createGenerateClassName({
     productionPrefix: 'ca',
 });
 
 export default () => {
+    const [isSignedIn, setIsSignedIn] = React.useState(false);
     return <StylesProvider generateClassName={generateClassName}>
         <BrowserRouter><div>
-            <Header />
+            <Header isSignedIn={isSignedIn} />
             <Suspense fallback={<Progress />}>
                 <Switch>
-                    <Route path="/auth" component={authLazy} />
+                    <Route path="/auth"> <AuthLazy onLogIn={() => setIsSignedIn(true)} /> </Route>
                     <Route path="/" component={marketingLazy} />
                 </Switch>
             </Suspense>
