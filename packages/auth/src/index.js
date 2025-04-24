@@ -1,4 +1,4 @@
-// Gives webpack time to load dependencies required by the marketing module
+// Gives webpack time to load dependencies required by the auth module
 import('./bootstrap')
     .then((module) => {
         module.default();
