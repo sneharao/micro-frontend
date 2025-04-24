@@ -4,7 +4,7 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import Header from '../components/Header';
 import Progress from '../components/progress';
 
-const marketingLazy = lazy(() => import('./../components/MarketingApp'));
+const marketingLazy = lazy(() => import('./../components/marketingApp'));
 const AuthLazy = lazy(() => import('./../components/authApp'));
 
 const generateClassName = createGenerateClassName({
