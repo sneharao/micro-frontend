@@ -1,42 +1,17 @@
-// Mount function for the marketing app
+import { createApp } from 'vue';
+import Dashboard from './components/Dashboard.vue';
 
-// export mount to be used by container app
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
-import { createMemoryHistory, createBrowserHistory } from 'history';
-
-const mount = (el, { onNavigate, onSignIn, defaultHostory, initialPath }) => {
-    const history = defaultHostory || createMemoryHistory({
-        initialEntries: [initialPath],
-    });
-    // We need to pass the history object to the app
-    if (onNavigate) {
-        history.listen(onNavigate);
-    }
-    ReactDOM.render(
-        <App history={history} onSignIn={onSignIn} />,
-        el
-    );
-    return {
-        onParentNavigate({ pathname: nextPathname }) {
-            const { pathname } = history.location;
-            console.log('onParentNavigate called from cAuth', pathname, nextPathname);
-            // to check if current location is same as next location
-            // if same then do not push to history
-            if (pathname !== nextPathname) {
-                history.push(nextPathname);
-            }
-
-        },
-    };
+const mount = (el) => {
+    // This is the root element of the dashboard
+    const app = createApp(Dashboard);
+    app.mount(el);
 }
 // If we are in development and in isolation, call mount immediately
 if (process.env.NODE_ENV === 'development') {
-    const devRoot = document.querySelector('#auth_dev_root');
+    const devRoot = document.querySelector('#dashboard_dev_root');
     if (devRoot) {
-        mount(devRoot, { defaultHostory: createBrowserHistory() });
+        mount(devRoot);
     }
 }
 

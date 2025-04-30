@@ -10,7 +10,7 @@ const devConfig = {
         publicPath: 'http://localhost:8083/', // Public path for the output files
     },
     devServer: {
-        port: 8082, // Port to run the server
+        port: 8083, // Port to run the server
         historyApiFallback: {
             index: '/index.html', // Serve index.html for all routes also in case of errors
         },

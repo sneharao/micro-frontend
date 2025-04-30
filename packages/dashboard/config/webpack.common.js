@@ -1,4 +1,4 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin'); // Import Vue loader plugin
+const { VueLoaderPlugin } = require('vue-loader'); // Import Vue loader plugin
 module.exports = {
     entry: './src/index.js', // Entry point of the application  
     output: {
@@ -39,4 +39,4 @@ module.exports = {
         }]
     },
     plugins: [new VueLoaderPlugin()], // Add Vue loader plugin
-}
+};
