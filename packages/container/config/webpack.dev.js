@@ -20,16 +20,11 @@ const devConfig = {
             name: 'container', // Name of the module global variable
             remotes: {
                 marketing: 'marketing@http://localhost:8081/remoteEntry.js', // Remote entry file for marketing app
-            },
-            shared: packageJson.dependencies, // Shared dependencies between apps
-        }),
-        new ModuleFederationPlugin({
-            name: 'container', // Name of the module global variable
-            remotes: {
                 auth: 'auth@http://localhost:8082/remoteEntry.js', // Remote entry file for auth app
+                dashboard: 'dashboard@http://localhost:8083/remoteEntry.js', // Remote entry file for dashboard app
             },
             shared: packageJson.dependencies, // Shared dependencies between apps
-        }),
+        })
     ],
 };
 
